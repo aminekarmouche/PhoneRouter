@@ -1,0 +1,16 @@
+{
+    "contents" : "# routing.R ---------------------------\n#functions for: \n#     - routing: callRoute() and cheapestRoute() \n\ncallRoute <- function(number, data){\n  #routing calls\n  #finds the route of the call based on the prefix (country + area code)  \n  #\n  #Args:\n  # number: String of characters containing dialled number\n  #\n  #Returns:\n  # route: data frame containing the operator route in case of a match\n  # NULL: no route found ie. no match \n  \n  #find the prefix, country, and area codes\n  prefix <- getPrefix(number)\n  country <- getCountry(prefix)\n  area <- getArea(prefix)\n  \n  #check null input\n  if((is.null(country) || is.null(area) || is.null(data)) == TRUE ){\n    return(NULL)\n  } else {\n    #iterate over the area code\n    for(i in 1:nchar(area)){ \n      # if no match found then reduce the area code\n      area <- substr(area, 1, nchar(area)-(i-1))  \n      #compose regex pattern\n      pattern <-  paste('^', country, area, sep = \"\")\n      #lookup using grep\n      index <- grep(pattern, data$prefix, perl = T)\n      if(nrow(data[index,])!=0){\n        result <- data[index,]\n        #keep longest prefix \n        route <- result[which(nchar(result$prefix, type = \"chars\") == max(nchar(result$prefix, type = \"chars\"))), ] \n        return(route)\n      }\n    }\n    return(NULL)\n  }\n}\n\ncheapestRoute <- function(number, list){\n  #finds the cheapest operator route \n  #\n  #Args:\n  # number: String of characters containing dialled number\n  # area: String of characters containing the area code\n  # list: list of data frames containing the operator list for all operators\n  #\n  #Returns:\n  # cheapest: data frame containing the operator route in case of a match\n  \n  #find the prefix, country, and area codes\n  prefix <- getPrefix(number)\n  country <- getCountry(prefix)\n  area <- getArea(prefix)\n  \n  # NULL: no route found ie. no match \n  if((is.null(country) || is.null(area) || is.null(list)) == TRUE ){\n    return(NULL)\n  } else {\n    \n    #format data as data frame\n    data <- data.frame()\n    for(i in list){\n      result <- callRoute(number, i)\n      data <- as.data.frame(rbind(data,result))\n    }\n    \n    #check if no match is made of any list\n    if((is.null(data) == TRUE)) {\n      print(\"No match!\")\n      return(NULL)\n    } else {\n      #keep the cheapest data frame\n      cheapest <- data[which(data$rate == min(data$rate)), ]\n      return(cheapest)\n    }\n  }  \n}",
+    "created" : 1435207915887.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "648363435",
+    "id" : "96E112BF",
+    "lastKnownWriteTime" : 1435553127,
+    "path" : "C:/Users/Amine/Desktop/Assignment/assignment/R/routing.R",
+    "project_path" : "R/routing.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,16 @@
+{
+    "contents" : "# dataFactory.R ---------------------------\n#Creates the pricing lists for each operators  to be used for different tests :D\n\n#Operator A data frame\noperatorA <- data.frame(prefix = c(1, 268, 46, 4620, 468, 4631, 4673, 46732), rate = c(0.9, 5.1, 0.17, 0.0, 0.15, 0.15,0.9, 1.1))\n#naming the operator\noperatorA$operator <- c(rep(\"A\", nrow(operatorA)))\n\n#operator B data frame\noperatorB <- data.frame(prefix = c(1, 44, 46, 467, 48), rate = c(0.92, 0.5, 0.2, 1.0, 1.2))\n#naming the operator\noperatorB$operator <- c(rep(\"B\", nrow(operatorB)))\n\n#list of all price lists as data frame\noperatorsList <- list(operatorA,operatorB)\n\n\n",
+    "created" : 1435207916661.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3283203547",
+    "id" : "C246242E",
+    "lastKnownWriteTime" : 1435553169,
+    "path" : "C:/Users/Amine/Desktop/Assignment/assignment/R/dataFactory.R",
+    "project_path" : "R/dataFactory.R",
+    "properties" : {
+    },
+    "source_on_save" : true,
+    "type" : "r_source"
+}

@@ -1,0 +1,16 @@
+{
+    "contents" : "# runTests.R ---------------------------\n#Running tests for : \n#     - functions.R\n#     - Routing.R\n\nlibrary(\"RUnit\")\nlibrary(\"testthat\")\n\nsource('R/functions.R')\nsource('R/routing.R')\n\n\n# -- Defining test suites and showing testresults\n# testing functions.R\ntestSuite.functions <- defineTestSuite(name = \"functions test suite\", dirs = file.path(\"tests\"),testFileRegexp = \"test_functions.R\")\ntestResult.functions <- runTestSuite(testSuite.functions)\nprintTextProtocol(testResult.functions)\n\n\n#testing routing.R\ntestSuite.routing <- defineTestSuite(name = \"routing test suite\", dirs = file.path(\"tests\"),testFileRegexp = \"test_routing.R\")\ntestResult.routing <- runTestSuite(testSuite.routing)\nprintTextProtocol(testResult.routing)\n",
+    "created" : 1435552235314.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3042534925",
+    "id" : "2957DAD9",
+    "lastKnownWriteTime" : 1435552375,
+    "path" : "C:/Users/Amine/Desktop/Assignment/assignment/tests/runTests.R",
+    "project_path" : "tests/runTests.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

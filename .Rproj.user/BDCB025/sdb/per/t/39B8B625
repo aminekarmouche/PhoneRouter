@@ -1,0 +1,16 @@
+{
+    "contents" : "source('R/functions.R')\nsource('R/routing.R')\n\n\n# ~~~~~~~~~~~~~~~~~~~~~~~~~~ SETUP START ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n# The setup portion of this demo will execute steps would happen organically in\n# the course this assignment.\n# steps are:\n#\n# - get the price lists data in data frames\n# - name the data frames according to the operator\n# - aggregate the data frames in a list (operatorList)\n\n# The test file would normally reside in \"<packagedir>/tests/unitizer\", \n\n#Operator A data\noperatorA <- data.frame(prefix = c(1, 268, 46, 4620, 468, 4631, 4673, 46732), rate = c(0.9, 5.1, 0.17, 0.0, 0.15, 0.15,0.9, 1.1))\noperatorA$operator <- c(rep(\"A\", nrow(operatorA)))\n\n#operator B data\noperatorB <- data.frame(prefix = c(1, 44, 46, 467, 48), rate = c(0.92, 0.5, 0.2, 1.0, 1.2))\noperatorB$operator <- c(rep(\"B\", nrow(operatorB)))\n\n#list of all price lists\noperatorsList <- list(operatorA,operatorB)\n\n# - The number is inputted in a format \"68123456789\" according to the assignment\n# - The prefix, countryCode and areaCode are extracted using the helper fucntions in functions.R\n\n#input number and finding country and area\ninput <- \"4673123456\"\n#getting country and area codes\n\n\n# The operator with the cheapest pricing is outputted in a string with the different details\noutput <- cheapestRoute(input, operatorsList)\noperator <- output$operator\nrate <- output$rate\npaste(\"The cheapest operator for the number +\", input, \" is operator: \", operator, \" with a rate of:\", rate, \" Kr./min\", sep = \"\")\n\n#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DEMO OVER :D ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+    "created" : 1435552982238.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3552808002",
+    "id" : "39B8B625",
+    "lastKnownWriteTime" : 1435553071,
+    "path" : "C:/Users/Amine/Desktop/Assignment/assignment/demo.R",
+    "project_path" : "demo.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
